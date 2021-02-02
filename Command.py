@@ -1,6 +1,7 @@
 from StudentVisitor import StudentVisitor
 from Stud_Registry import StudentRegistry
 from Student import Student
+from Edit_context import Edit_context
 def ListStudentsCommand():
   v = DetailedPrintVisitor()
   StudentRegistry().visit_students(v)
@@ -21,7 +22,7 @@ def ShowLowAchiverCommand():
   s = LowAchiverVisitor()
   StudentRegistry().visit_students(s)
 
-def DeliteStudentCommand():
+def DeleteStudentCommand():
   BrifShow= BriefPrintVisitor()
   StudentRegistry().visit_students(BrifShow)
   number=int(input("Введите номер студента"))
@@ -32,3 +33,19 @@ def DeliteStudentCommand():
     ready=input("Такого варината нет \nУдалить студента номер {number}\n Введите 1-да 2-нет")
   if ready ==1:
    StudentRegistry().removeStudent(number)
+
+def SelectStudentCommand():
+  SelectShow= BriefPrintVisitor()
+  StudentRegistry().visit_students(SelectShow)
+  SelectNumber=int(input("Введите номер студента"))
+  while number < 1 or len(StudentRegistry().students) < number
+    SelectNumber=int(input("Такого студента нет, введите номер студента: "))
+  Edit_context().student=StudentRegistry().students[SelectNumber]
+
+def ShowSelectCommand():
+  Edit_context().student(print_long)
+
+def DeselectStudentCommand():
+  Edit_context().student=None
+
+  
