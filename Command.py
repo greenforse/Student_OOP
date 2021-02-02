@@ -24,10 +24,10 @@ def ShowLowAchiverCommand():
 def DeliteStudentCommand():
   BrifShow= BriefPrintVisitor()
   StudentRegistry().visit_students(BrifShow)
-  number=input("Введите номер студента")
+  number=int(input("Введите номер студента"))
   while number < 1 or len(StudentRegistry().students) < number
     number=input("Такого студента нет, введите номер студента")
-  ready=input("Удалить студента номер {number}\n Введите 1-да 2-нет")
+  ready=int(input("Удалить студента номер {number}\n Введите 1-да 2-нет"))
   while ready !=1 and ready !=2:
     ready=input("Такого варината нет \nУдалить студента номер {number}\n Введите 1-да 2-нет")
   if ready ==1:
