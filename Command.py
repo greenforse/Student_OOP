@@ -3,7 +3,7 @@ from Stud_Registry import StudentRegistry
 from Student import Student
 from Edit_context import Edit_context
 def ListStudentsCommand():
-  v = DetailedPrintVisitor()
+  v = StudentVisitor().DetailedPrintVisitor()
   StudentRegistry().visit_students(v)
 
 def AddStudentCommand():
@@ -12,21 +12,21 @@ def AddStudentCommand():
   last_name=input("Введите имя")
   group=input("Введите группу")
   NewStudent=Student(first_name,midle_name,last_name,group)
-  StudentRegystry().addStudent(NewStudent)
+  StudentRegistry().addStudent(NewStudent)
 
 def ShowHightAchiverCommand():
-  s = HightAchiverVisitor()
+  s = StudentVisitor().HightAchiverVisitor()
   StudentRegistry().visit_students(s)
 
 def ShowLowAchiverCommand():
-  s = LowAchiverVisitor()
+  s = StudentVisitor().LowAchiverVisitor()
   StudentRegistry().visit_students(s)
 
 def DeleteStudentCommand():
-  BrifShow= BriefPrintVisitor()
+  BrifShow= StudentVisitor().BriefPrintVisitor()
   StudentRegistry().visit_students(BrifShow)
   number=int(input("Введите номер студента"))
-  while number < 1 or len(StudentRegistry().students) < number
+  while number < 1 or len(StudentRegistry().students) < number:
     number=input("Такого студента нет, введите номер студента")
   ready=int(input("Удалить студента номер {number}\n Введите 1-да 2-нет"))
   while ready !=1 and ready !=2:
@@ -35,15 +35,15 @@ def DeleteStudentCommand():
    StudentRegistry().removeStudent(number)
 
 def SelectStudentCommand():
-  SelectShow= BriefPrintVisitor()
+  SelectShow= StudentVisitor().BriefPrintVisitor()
   StudentRegistry().visit_students(SelectShow)
   SelectNumber=int(input("Введите номер студента"))
-  while number < 1 or len(StudentRegistry().students) < number
+  while SelectNumber < 1 or len(StudentRegistry().students) < SelectNumber:
     SelectNumber=int(input("Такого студента нет, введите номер студента: "))
   Edit_context().student=StudentRegistry().students[SelectNumber]
 
 def ShowSelectCommand():
-  Edit_context().student(print_long)
+  Edit_context().student.print_long()
 
 def DeselectStudentCommand():
   Edit_context().student=None
