@@ -40,7 +40,7 @@ def SelectStudentCommand():
   SelectNumber=int(input("Введите номер студента"))
   while SelectNumber < 1 or len(StudentRegistry().students) < SelectNumber:
     SelectNumber=int(input("Такого студента нет, введите номер студента: "))
-  Edit_context().student=StudentRegistry().students[SelectNumber]
+  Edit_context().student=StudentRegistry().getStudent(SelectNumber)
 
 def ShowSelectCommand():
   Edit_context().student.print_long()

@@ -1,5 +1,6 @@
 from MenuItem import MenuItem
 from SimpleMenu import SimpleMenuItem
+import Command
 class Menu(MenuItem):
     def __init__(self,title,number,is_submenu=False):
         super().__init__(number, title)
@@ -15,7 +16,7 @@ class Menu(MenuItem):
         self.startup_command = command
     def set_before_select_command(self, command):
         self.before_select_command = command
-    def tear_down_command(self, command):
+    def set_tear_down_command(self, command):
         self.tear_down_command = command
     def printMenu(self):
         for i in range (len(self.item)):
@@ -31,6 +32,9 @@ class Menu(MenuItem):
     def addSubMenu(self,title,number):
         subMenu=Menu(title,number,True)
         self.item.append(subMenu)
+        self.set_startup_command(Command.SelectStudentCommand())
+        self.set_before_select_command(Command.ShowSelectCommand())
+        self.set_tear_down_command(Command.DeselectStudentCommand())
         return subMenu
     def select(self):
         self.run=True

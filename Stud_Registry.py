@@ -15,7 +15,7 @@ class StudentRegistry(metaclass=Singleton):
         del self.students[number]
 
     def getStudent(self,number):
-        return self.students[number]
+        return self.students[number-1]
 
     def getStudentCount(self):
         return len(self.students)
