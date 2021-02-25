@@ -4,7 +4,7 @@ from Student import Student
 from Edit_context import Edit_context
 from DetailedPrintVisitor import DetailedPrintVisitor
 def ListStudentsCommand():
-  v = DetailedPrintVisitor()
+  v = DetailedPrintVisitor
   StudentRegistry.visit_students(v)
 
 def AddStudentCommand():

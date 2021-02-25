@@ -32,7 +32,7 @@ class Menu(MenuItem):
         #return item
     def addSubMenu(self,title,number):
         subMenu=Menu(title,number,True)
-        #self.item.append(subMenu)
+        self.item.append(subMenu)
         return subMenu
     def select(self):
         self.run=True
