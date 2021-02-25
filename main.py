@@ -7,7 +7,7 @@ glavnoeMenu=Menu("Главное меню",0)
 #glavnoeMenu.additem(0,"Пункт_1",Command.ListStudentsCommand())
 
 glavnoeMenu.additem(1,"Список студентов",Command.ListStudentsCommand)
-subMenu = glavnoeMenu.addSubMenu("Редактировать студента",2)
+subMenu = glavnoeMenu.addSubMenu("Удалить студента",2)
 subMenu.set_startup_command(Command.SelectStudentCommand)
 subMenu.set_before_select_command(Command.ShowSelectCommand)
 subMenu.set_tear_down_command(Command.DeselectStudentCommand)
