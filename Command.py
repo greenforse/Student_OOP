@@ -2,9 +2,10 @@ from StudentVisitor import StudentVisitor
 from Stud_Registry import StudentRegistry
 from Student import Student
 from Edit_context import Edit_context
+from DetailedPrintVisitor import DetailedPrintVisitor
 def ListStudentsCommand():
-  v = StudentVisitor().DetailedPrintVisitor()
-  StudentRegistry().visit_students(v)
+  v = DetailedPrintVisitor()
+  StudentRegistry.visit_students(v)
 
 def AddStudentCommand():
   first_name=input("Введите фамилию")

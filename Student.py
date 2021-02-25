@@ -15,6 +15,6 @@ class Student:
         if len(self.marks)!=0:
             print("Список предметов: ")
             for key in self.marks.keys():
-                print(f"{key}:{self.marks{key}}")
+               print(f"{key}:{self.marks[key]}")
         else: print("список пуст")
         

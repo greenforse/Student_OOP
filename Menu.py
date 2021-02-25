@@ -29,12 +29,10 @@ class Menu(MenuItem):
     def additem(self,number,title,command):
         item=SimpleMenuItem(number,title,command)
         self.item.append(item)
+        #return item
     def addSubMenu(self,title,number):
         subMenu=Menu(title,number,True)
-        self.item.append(subMenu)
-        self.set_startup_command(Command.SelectStudentCommand())
-        self.set_before_select_command(Command.ShowSelectCommand())
-        self.set_tear_down_command(Command.DeselectStudentCommand())
+        #self.item.append(subMenu)
         return subMenu
     def select(self):
         self.run=True
