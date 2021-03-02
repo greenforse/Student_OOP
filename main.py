@@ -7,11 +7,28 @@ glavnoeMenu=Menu("Главное меню",0)
 #glavnoeMenu.additem(0,"Пункт_1",Command.ListStudentsCommand())
 
 glavnoeMenu.additem(1,"Список студентов",Command.ListStudentsCommand)
-subMenu = glavnoeMenu.addSubMenu("Удалить студента",2)
+AddStud=glavnoeMenu.additem(2,"Добавить студента",Command.AddStudentCommand )
+subMenu = glavnoeMenu.addSubMenu("Удалить студента",3)
 subMenu.set_startup_command(Command.SelectStudentCommand)
 subMenu.set_before_select_command(Command.ShowSelectCommand)
 subMenu.set_tear_down_command(Command.DeselectStudentCommand)
-subMenu.additem(1,"Удалить студента",Command.DeleteStudentCommand)
+
+editStudents=glavnoeMenu.addSubMenu("Редактировать студента",4)
+editStudents.set_startup_command(Command.SelectStudentCommand)
+editStudents.set_before_select_command(Command.ShowSelectCommand)
+editStudents.set_tear_down_command(Command.DeselectStudentCommand)
+editStudents.additem(1,"Изменить фамилию",Command.EditFirstNameCommand)
+editStudents.additem(2,"Изменить имя",Command.EditMidleNameCommand)
+editStudents.additem(3,"Изменить отчество",Command.EditLastNameCommand)
+editStudents.additem(4,"Изменить группу",Command.EditGroupCommand)
+editStudents.additem(5,"добавить оценку",Command.AddMarkCommand)
+editStudents.additem(6,"Изменить оценку",Command.EditMarkCommand)
+
+HighShow=glavnoeMenu.additem(5,"Показать отличников",Command.ShowHightAchiverCommand)
+
+LowShow=glavnoeMenu.additem(6,"Показать неуспевающих",Command.ShowLowAchiverCommand)
+
+
 #subMenu.additem(0,"Пункт_3",test)
 #subMenu.additem(0,"Пункт_4",test)
 #glavnoeMenu.item.append(subMenu)

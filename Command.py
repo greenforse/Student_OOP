@@ -3,6 +3,7 @@ from Stud_Registry import StudentRegistry
 from Student import Student
 from Edit_context import Edit_context
 from DetailedPrintVisitor import DetailedPrintVisitor
+from BriefPrintVisitor import BriefPrintVisitor
 def ListStudentsCommand():
   v = DetailedPrintVisitor
   StudentRegistry.visit_students(v)
@@ -36,8 +37,8 @@ def DeleteStudentCommand():
    StudentRegistry().removeStudent(number)
 
 def SelectStudentCommand():
-  SelectShow= StudentVisitor().BriefPrintVisitor()
-  StudentRegistry().visit_students(SelectShow)
+  SelectShow =StudentVisitor().BriefPrintVisitor()
+  StudentRegistry.visit_students(SelectShow)
   SelectNumber=int(input("Введите номер студента"))
   while SelectNumber < 1 or len(StudentRegistry().students) < SelectNumber:
     SelectNumber=int(input("Такого студента нет, введите номер студента: "))
@@ -56,35 +57,35 @@ def EditFirstNameCommand():
 
 def EditMidleNameCommand():
   MName=input("Введите новую фамилию")
-   Edit_context().student.insert(1,MName)
-   del Edit_context().studen[2]
-  
+  Edit_context().student.insert(1,MName)
+  del Edit_context().student[2]
+
 def EditLastNameCommand():
   LName=input("Введите новое отчесво")
-   Edit_context().student.insert(2,LName)
-   del Edit_context().studen[3]
+  Edit_context().student.insert(2,LName)
+  del Edit_context().studen[3]
 
 def EditGroupCommand():
   group=input("Введите новую группу")
-   Edit_context().student.insert(3,group)
-   del Edit_context().studen[4]
+  Edit_context().student.insert(3,group)
+  del Edit_context().studen[4]
 
 def AddMarkCommand():
   mark=input("Введите предмет: ")
   if mark not in Edit_context.student.marks:
     score=int(input("Введите оценку: "))
     Edit_context.student.marks[mark]=score
-  else print("Ошибка: такой предмет уже есть")
+  else: print("Ошибка: такой предмет уже есть")
 
 def EditMarkCommand():
   mark=input("Введите предмет: ")
   if mark  in Edit_context.student.marks:
     score=int(input("Введите оценку: "))
     Edit_context.student.marks[mark]=score
-  else print("Ошибка: такой предмета нет")
+  else: print("Ошибка: такой предмета нет")
 
 def DeleteMarkCommand():
   mark=input("Введите предмет для удаления: ")
   if mark  in Edit_context.student.marks:
     del Edit_context.student.marks[mark]
-  else print("Ошибка: такой предмета нет")
+  else: print("Ошибка: такой предмета нет")
