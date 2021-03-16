@@ -2,8 +2,7 @@ from Singleton import Singleton
 from Student import Student
 #from Menu import Menu
 #from SimpleMenu import SimpleMenuItem
-def test():
-    print("test")
+
 class StudentRegistry(metaclass=Singleton):
     def __init__(self):
         self.students=[]
