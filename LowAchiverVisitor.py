@@ -11,7 +11,7 @@ class LowAchiverVisitor(StudentVisitor):
                 self.low_student=True
         if self.low_student:
             self.has_students = True
-            print(f"=== {number} ===")
+            print(f"=== {number+1} ===")
             student.print_long()
         
     def finish_visit(self):

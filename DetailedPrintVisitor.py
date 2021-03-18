@@ -5,7 +5,7 @@ class DetailedPrintVisitor(StudentVisitor):
     self.has_students = False
 
   def visit_student(self, number, student):
-    print(f"=== {number} ===")
+    print(f"=== {number+1} ===")
     student.print_long()
     self.has_students = True
 

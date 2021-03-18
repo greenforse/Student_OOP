@@ -5,7 +5,7 @@ class BriefPrintVisitor(StudentVisitor):
     self.has_students = False
 
   def visit_student(self, number, student):
-    print(f" {number}",end="")
+    print(f" {number+1}.",end="")
     student.print_short()
     self.has_students = True
 

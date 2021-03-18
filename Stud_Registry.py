@@ -11,7 +11,7 @@ class StudentRegistry(metaclass=Singleton):
         self.students.append(student)
 
     def removeStudent(self,number):
-        del self.students[number]
+        del self.students[number-1]
 
     def getStudent(self,number):
         return self.students[number-1]
