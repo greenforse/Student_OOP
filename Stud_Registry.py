@@ -1,11 +1,14 @@
 from Singleton import Singleton
 from Student import Student
+#from StudentVisitor import StudentVisitor
+#from DetailedPrintVisitor import DetailedPrintVisitor
 #from Menu import Menu
 #from SimpleMenu import SimpleMenuItem
-
+import json
 class StudentRegistry(metaclass=Singleton):
     def __init__(self):
         self.students=[]
+        self.saveLoad()
         
     def addStudent(self,student):
         self.students.append(student)
@@ -24,21 +27,21 @@ class StudentRegistry(metaclass=Singleton):
         for i, student in enumerate(self.students):
           visitor.visit_student(i, student)
         visitor.finish_visit()
-        ##while number > len() or number < 1:
-        #self.students[number].printLong()
-        #send=int(input("Редактировать студента ? 1:да 2:нет"))
-        #while send !=1 or send !=2:
-        #    send=int(input("Редактировать студента ? 1:да 2:нет"))
-        #if send ==1:
-        #    studMenu=Menu.addSubMenu("Редактирование студента",1)
-        #    studMenu.additem(number,"Редактировать фамилию",test)
-        #    studMenu.additem(number,"Редактировать Имя",test)
-        #    studMenu.additem(number,"Редактировать Отчество",test)
-        #    zaprosPredmetov=int(input("Заполнить или изменить предметы и оценки? 1-да 2-нет"))
-            #if zaprosPredmetov==1:
-                #predmetMenu=studMenu.addSubMenu("Редактирование списка предметов",0)
-                #predmetMenu.
-
-
-            #self.students[number]=self.addStudent(student)
-        
+    def saveLoad(self):
+        if len(self.students)!=0:
+            saveStudents=[]
+            for i, student in enumerate(self.students):
+                saveStudent={}
+                saveStudent["First Name"] = student.first_name
+                saveStudent["Midl Name"] = student.midle_name
+                saveStudent["Last Name"] = student.last_name
+                saveStudent["Group"] = student.group
+                marks={}
+                for i, mark in student.marks.items():
+                    marks[i]=mark
+                saveStudent["Marks"] = marks
+                saveStudents.append(saveStudent)
+            json_str= json.dumps(saveStudents)
+            with open ("DocSave.json","w") as f:
+                f.write(json_str)
+       

@@ -48,6 +48,7 @@ class Menu(MenuItem):
     def execute(self):
         if self.startup_command is not None:
             self.startup_command()
+        self.run=True
         while self.run:
             if self.before_select_command is not None:
                 self.before_select_command()
