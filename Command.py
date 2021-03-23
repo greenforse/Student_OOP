@@ -40,7 +40,7 @@ def DeleteStudentCommand():
     ready=input(f"Такого варината нет \nУдалить студента номер {number}\n Введите 1-да 2-нет")
   if ready ==1:
    StudentRegistry().removeStudent(number)
-   StudentRegistry().saveLoad()
+   StudentRegistry().save()
 
 def SelectStudentCommand():
   SelectShow = BriefPrintVisitor()
@@ -60,34 +60,34 @@ def EditFirstNameCommand():
   fname=input("Введите новую фамилию: ")
   #EditFName=Edit_context().student
   Edit_context().student.first_name = fname
-  StudentRegistry().saveLoad()
+  StudentRegistry().save()
   #EditFName.insert(0,fname)
   #del Edit_context().student[1]
 
 def EditMidleNameCommand():
   MName=input("Введите новое Отчество: ")
   Edit_context().student.midle_name = MName
-  StudentRegistry().saveLoad()
+  StudentRegistry().save()
   #del Edit_context().student[2]
 
 def EditLastNameCommand():
   LName=input("Введите новое имя: ")
   Edit_context().student.last_name = LName
-  StudentRegistry().saveLoad()
+  StudentRegistry().save()
   #del Edit_context.student[3]
 
 def EditGroupCommand():
   group=input("Введите новую группу")
   Edit_context().student.insert(3,group)
   del Edit_context.student[4]
-  StudentRegistry().saveLoad()
+  StudentRegistry().save()
 
 def AddMarkCommand():
   mark=input("Введите предмет: ")
   if mark not in Edit_context().student.marks:
     score=int(input("Введите оценку: "))
     Edit_context().student.marks[mark]=score
-    StudentRegistry().saveLoad()
+    StudentRegistry().save()
   else: print("Ошибка: такого предмет уже есть")
 
 def EditMarkCommand():
@@ -95,7 +95,7 @@ def EditMarkCommand():
   if mark  in Edit_context().student.marks:
     score=int(input("Введите оценку: "))
     Edit_context().student.marks[mark]=score
-    StudentRegistry().saveLoad()
+    StudentRegistry().save()
   else: print("Ошибка: такого предмета нет")
 
 def DeleteMarkCommand():
@@ -104,7 +104,7 @@ def DeleteMarkCommand():
     YN=int(input("Вы действительно хотите удалить предмет 1-да 2-нет"))
     if YN == 1 :
       del Edit_context().student.marks[mark]
-      StudentRegistry().saveLoad()
+      StudentRegistry().save()
     if YN == 2:
       pass
     else: print("нет такого варианта ответа")

@@ -5,13 +5,13 @@ from SimpleMenu import SimpleMenuItem
 import Command
 from Student import Student
 from Stud_Registry import StudentRegistry
-if os.path.exists("DocSave.json"):
-    with open ("DocSave.Json","r") as f:
-        saveStudents = json.load(f)
-        for i, json_student in enumerate(saveStudents):
-            student = Student(json_student["First Name"], json_student["Midl Name"], json_student["Last Name"], json_student["Group"])
-            student.marks=json_student["Marks"]
-            StudentRegistry().students.append(student)
+#if os.path.exists("DocSave.json"):
+#    with open ("DocSave.Json","r") as f:
+#        saveStudents = json.load(f)
+#        for i, json_student in enumerate(saveStudents):
+#            student = Student(json_student["First Name"], json_student["Midl Name"], json_student["Last Name"], json_student["Group"])
+#            student.marks=json_student["Marks"]
+#            StudentRegistry().students.append(student)
 def test():
     print("ТЕСТ")
 glavnoeMenu=Menu("Главное меню",0)

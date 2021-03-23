@@ -1,4 +1,5 @@
 from Singleton import Singleton
+import os
 from Student import Student
 #from StudentVisitor import StudentVisitor
 #from DetailedPrintVisitor import DetailedPrintVisitor
@@ -8,7 +9,8 @@ import json
 class StudentRegistry(metaclass=Singleton):
     def __init__(self):
         self.students=[]
-        self.saveLoad()
+        self.save()
+        self.load()
         
     def addStudent(self,student):
         self.students.append(student)
@@ -27,7 +29,7 @@ class StudentRegistry(metaclass=Singleton):
         for i, student in enumerate(self.students):
           visitor.visit_student(i, student)
         visitor.finish_visit()
-    def saveLoad(self):
+    def save(self):
         if len(self.students)!=0:
             saveStudents=[]
             for i, student in enumerate(self.students):
@@ -44,4 +46,12 @@ class StudentRegistry(metaclass=Singleton):
             json_str= json.dumps(saveStudents)
             with open ("DocSave.json","w") as f:
                 f.write(json_str)
-       
+
+    def load (self):
+        if os.path.exists("DocSave.json"):
+            with open ("DocSave.Json","r") as f:
+                saveStudents = json.load(f)
+                for i, json_student in enumerate(saveStudents):
+                    student = Student(json_student["First Name"], json_student["Midl Name"], json_student["Last Name"], json_student["Group"])
+                    student.marks=json_student["Marks"]
+                    self.students.append(student)
